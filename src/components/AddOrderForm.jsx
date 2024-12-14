@@ -59,12 +59,12 @@ const AddOrderForm = ({
             </tr>
           </thead>
           <tbody>
-            <tr className="bg-blue-50">
+            <tr className="bg-blue-100">
               <td
-                className="text-center text-black border-2 border-r"
+                className="text-center text-black border-2 border-r-white"
                 style={{ fontFamily: "Monaco, monospace" }}>
                 <input
-                  className="w-full text-center bg-transparent border-2 border-r"
+                  className="text-lg bg-white border-r "
                   ref={inputRef}
                   type="text"
                   value={orderItem}
@@ -72,17 +72,17 @@ const AddOrderForm = ({
                 />
               </td>
               <td
-                className="text-center text-black border-2 border-r"
+                className="text-center text-black border-2 border-r-white"
                 style={{ fontFamily: "Monaco, monospace" }}>
                 <input
-                  className="w-full text-center bg-transparent border-2 border-r"
+                  className="text-lg bg-white border-r "
                   type="number"
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
                 />
               </td>
               <td
-                className="pt-1 text-center text-black border-2 border-r"
+                className="pt-1 text-center text-black border-2 border-r-white"
                 style={{ fontFamily: "Monaco, monospace" }}>
                 <input
                   id="default-checkbox"
@@ -92,13 +92,12 @@ const AddOrderForm = ({
                   onChange={(e) => setPromo(e.target.checked)}
                 />
               </td>
-              <td
-                className="text-sm text-center text-black border-2"
-                style={{ fontFamily: "Monaco, monospace" }}>
+              <td className="text-center ">
                 <button
-                  className="pr-3 mr-1 text-blue-700 border-r border-blue-700"
+                  className="btn bg-[rgba(0,0,139,0.96)] border rounded-lg text-white btn-sm"
+                  style={{ fontFamily: "Monaco, monospace" }}
                   onClick={handleAddOrder}>
-                  Add Order
+                  Place Order
                 </button>
               </td>
             </tr>

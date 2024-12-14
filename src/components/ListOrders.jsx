@@ -7,52 +7,21 @@ import {
   getTotalDiscountedBill,
 } from "./service/apiService";
 
-const ListOrders = ({ setError, setSuccess }) => {
-  const [orders, setOrders] = useState([]);
+const ListOrders = ({
+  setError,
+  setSuccess,
+  orders,
+  setOrders, // Add setOrders as a prop
+  totalRegularBill,
+  totalDiscountedBill,
+  fetchTotalBills, // Add fetchTotalBills as a prop
+}) => {
   const [editMode, setEditMode] = useState(null);
   const [orderItem, setOrderItem] = useState("");
   const [price, setPrice] = useState(0);
   const [promo, setPromo] = useState(false);
   const [clerkName, setClerkName] = useState("Jane Doe");
-  const [totalRegularBill, setTotalRegularBill] = useState(0);
-  const [totalDiscountedBill, setTotalDiscountedBill] = useState(0);
   const inputRef = useRef();
-
-  useEffect(() => {
-    const fetchOrders = async () => {
-      try {
-        const data = await getOrders();
-        setOrders(data);
-      } catch (err) {
-        setError(err.message);
-      }
-    };
-
-    const fetchTotalBills = async () => {
-      try {
-        const regularBill = await getTotalRegularBill();
-        const discountedBill = await getTotalDiscountedBill();
-        setTotalRegularBill(regularBill);
-        setTotalDiscountedBill(discountedBill);
-      } catch (err) {
-        setError(err.message);
-      }
-    };
-
-    fetchOrders();
-    fetchTotalBills();
-  }, [setError]);
-
-  const fetchTotalBills = async () => {
-    try {
-      const regularBill = await getTotalRegularBill();
-      const discountedBill = await getTotalDiscountedBill();
-      setTotalRegularBill(regularBill);
-      setTotalDiscountedBill(discountedBill);
-    } catch (err) {
-      setError(err.message);
-    }
-  };
 
   const handleEditClick = (order) => {
     setEditMode(order.id);
