@@ -80,10 +80,10 @@ function App() {
             setError={setError}
             setSuccess={setSuccess}
             orders={orders}
-            setOrders={setOrders} // Pass setOrders as a prop
+            setOrders={setOrders}
             totalRegularBill={totalRegularBill}
             totalDiscountedBill={totalDiscountedBill}
-            fetchTotalBills={fetchTotalBills} // Pass fetchTotalBills as a prop
+            fetchTotalBills={fetchTotalBills}
           />
         </div>
       </div>

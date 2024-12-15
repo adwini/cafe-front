@@ -24,7 +24,7 @@ const AddOrderForm = ({
 
     try {
       await addOrder(newOrder);
-      setSuccess("Order added successfully!");
+      setSuccess("Order is successfully added.");
       setError(null);
       setOrderItem("");
       setPrice(0);

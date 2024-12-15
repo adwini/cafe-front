@@ -50,7 +50,7 @@ const ListOrders = ({
           order.id === id ? { ...order, ...updatedOrder } : order
         )
       );
-      setSuccess("Order updated successfully!");
+      setSuccess("Order is successfully updated.");
       setError(null);
       setEditMode(null);
       fetchTotalBills();
@@ -64,7 +64,7 @@ const ListOrders = ({
     try {
       await deleteOrder(id);
       setOrders((prevOrders) => prevOrders.filter((order) => order.id !== id));
-      setSuccess("Order deleted successfully!");
+      setSuccess("Order is successfully deleted.");
       setError(null);
       fetchTotalBills();
     } catch (err) {
