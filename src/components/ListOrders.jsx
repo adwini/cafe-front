@@ -129,6 +129,7 @@ const ListOrders = ({
                       className="w-full text-center bg-transparent border-2 border-r "
                       type="number"
                       value={price}
+                      defaultValue={0}
                       onChange={(e) => setPrice(e.target.value)}
                     />
                   ) : (
