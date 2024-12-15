@@ -4,7 +4,7 @@ import AddOrderForm from "./components/AddOrderForm";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import ListOrders from "./components/ListOrders";
-import MessageInfo from "./components/common/MessageInfo";
+import MessageInfo from "./components/utils/MessageInfo";
 import {
   getOrders,
   getTotalRegularBill,
@@ -23,7 +23,7 @@ function App() {
       const data = await getOrders();
       setOrders(data);
     } catch (err) {
-      setError(err.message);
+      setError("Cannot load details. Something went wrong.");
     }
   };
 
@@ -34,7 +34,7 @@ function App() {
       setTotalRegularBill(regularBill);
       setTotalDiscountedBill(discountedBill);
     } catch (err) {
-      setError(err.message);
+      setError("Cannot load details. Something went wrong.");
     }
   };
 
@@ -65,11 +65,11 @@ function App() {
           onClose={handleCloseMessage}
         />
       )}
-      <div className="flex flex-col md:flex-row gap-2 p-2 bg-gray-100 min-h-screen">
-        <div className="menu w-full md:w-2/5">
+      <div className="flex flex-col min-h-screen gap-2 p-2 bg-gray-100 md:flex-row">
+        <div className="w-full menu md:w-2/5">
           <Menu />
         </div>
-        <div className="order-form w-full md:w-3/5 mt-4">
+        <div className="w-full mt-4 order-form md:w-3/5">
           <AddOrderForm
             setError={setError}
             setSuccess={setSuccess}

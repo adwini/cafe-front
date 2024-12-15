@@ -11,10 +11,10 @@ const ListOrders = ({
   setError,
   setSuccess,
   orders,
-  setOrders, // Add setOrders as a prop
+  setOrders,
   totalRegularBill,
   totalDiscountedBill,
-  fetchTotalBills, // Add fetchTotalBills as a prop
+  fetchTotalBills,
 }) => {
   const [editMode, setEditMode] = useState(null);
   const [orderItem, setOrderItem] = useState("");
@@ -34,6 +34,7 @@ const ListOrders = ({
     setEditMode(null);
   };
 
+  // Update Handler
   const handleUpdateOrder = async (id) => {
     if (!orderItem) {
       setError("Order item cannot be empty");
@@ -52,22 +53,23 @@ const ListOrders = ({
       setSuccess("Order updated successfully!");
       setError(null);
       setEditMode(null);
-      fetchTotalBills(); // Update total bills after updating an order
+      fetchTotalBills();
     } catch (err) {
-      setError(err.message);
+      setError("Unable to update order. Something went wrong.");
       setSuccess(null);
     }
   };
-
+  // Delete Handler
   const handleDeleteOrder = async (id) => {
     try {
       await deleteOrder(id);
       setOrders((prevOrders) => prevOrders.filter((order) => order.id !== id));
       setSuccess("Order deleted successfully!");
       setError(null);
-      fetchTotalBills(); // Update total bills after deleting an order
+      fetchTotalBills();
     } catch (err) {
-      setError(err.message);
+      setError("Unable to delete order. Something went wrong.");
+
       setSuccess(null);
     }
   };

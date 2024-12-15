@@ -12,6 +12,7 @@ const AddOrderForm = ({
   const [promo, setPromo] = useState(false);
   const inputRef = useRef();
 
+  //Add Order Handler
   const handleAddOrder = async () => {
     if (!orderItem) {
       setError("Order item cannot be empty");
@@ -28,10 +29,10 @@ const AddOrderForm = ({
       setOrderItem("");
       setPrice(0);
       setPromo(false);
-      fetchOrders(); // Refresh the orders list
-      fetchTotalBills(); // Update total bills after adding an order
+      fetchOrders();
+      fetchTotalBills();
     } catch (err) {
-      setError(err.message);
+      setError("Unable to add order. Something went wrong.");
       setSuccess(null);
     }
   };
