@@ -77,7 +77,6 @@ const AddOrderForm = ({
                 style={{ fontFamily: "Monaco, monospace" }}>
                 <input
                   className="text-lg bg-white border-r "
-                  type="number"
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
                 />

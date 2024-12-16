@@ -127,7 +127,6 @@ const ListOrders = ({
                   {editMode === order.id ? (
                     <input
                       className="w-full text-center bg-transparent border-2 border-r "
-                      type="number"
                       value={price}
                       defaultValue={0}
                       onChange={(e) => setPrice(e.target.value)}
@@ -199,10 +198,10 @@ const ListOrders = ({
           className="mt-3 mb-2 text-base text-center text-black"
           style={{ fontFamily: "Monaco, monospace" }}>
           <p>
-            Total Regular Bill: <span>{totalRegularBill}</span>
+            Total Regular Bill: $<span>{totalRegularBill}</span>
           </p>
           <p>
-            Total Discounted Bill: <span>{totalDiscountedBill}</span>
+            Total Discounted Bill: $<span>{totalDiscountedBill}</span>
           </p>
         </div>
       </div>
