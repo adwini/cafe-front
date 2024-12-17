@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/adwini/cafe-front.git'
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'npm run build'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                // Add your deployment steps here
+                // For example, copying build files to a server or deploying to a cloud service
+            }
+        }
+        post {
+            always {
+             echo 'Pipeline finished'
+            }
+        }
+    }
+}
