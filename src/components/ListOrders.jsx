@@ -1,11 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import {
-  getOrders,
-  updateOrder,
-  deleteOrder,
-  getTotalRegularBill,
-  getTotalDiscountedBill,
-} from "./service/apiService";
+import { updateOrder, deleteOrder } from "./service/apiService";
 
 const ListOrders = ({
   setError,
