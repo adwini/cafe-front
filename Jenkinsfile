@@ -1,8 +1,8 @@
 pipeline {
     agent any
     tools {
-        nodejs 'NodeJS 14' // Ensure this matches the name you set in Jenkins
-        maven 'Maven 3.6.3' // Ensure this matches the name you set in Jenkins
+        nodejs 'NodeJS' // Ensure this matches the name you set in Jenkins
+        maven 'Maven' // Ensure this matches the name you set in Jenkins
     }
     stages {
         stage('Checkout') {
@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: 'admin', path: '', url: 'http://localhost:9090/')], contextPath: '/', war: '**/target/*.war'
+            deploy adapters: [tomcat10(credentialsId: 'admin', path: '', url: 'http://localhost:9090/')], contextPath: '/', war: '**/target/*.war'
             }
         }
     }
