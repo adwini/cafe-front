@@ -1,6 +1,15 @@
 pipeline {
     agent any
+    tools {
+        nodejs 'NodeJS 14' // Ensure this matches the name you set in Jenkins
+        maven 'Maven 3.6.3' // Ensure this matches the name you set in Jenkins
+    }
     stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/adwini/cafe-front.git'
+            }
+        }
         stage('Install Dependencies') {
             steps {
                 bat 'npm install'
@@ -11,23 +20,14 @@ pipeline {
                 bat 'npm run build'
             }
         }
-        // stage('Test') {
-        //     steps {
-        //         bat 'jenkins\\scripts\\test.bat'
-        //     }
-        // }
-        stage('Deploy') {
+        stage('Package') {
             steps {
-                // Add your deployment steps here
-                // For example, copying build files to a server or deploying to a cloud service
-                bat 'scp -r dist/* user@server:/path/to/deploy'
+                bat 'mvn clean package'
             }
         }
-        stage('Deliver') { 
+        stage('Deploy') {
             steps {
-                bat 'jenkins\\scripts\\deliver.bat' 
-                input message: 'Finished using the web site? (Click "Proceed" to continue)' 
-                bat 'jenkins\\scripts\\kill.bat' 
+                deploy adapters: [tomcat9(credentialsId: 'admin', path: '', url: 'http://localhost:9090/')], contextPath: '/', war: '**/target/*.war'
             }
         }
     }
