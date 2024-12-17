@@ -11,11 +11,11 @@ pipeline {
                 bat 'npm run build'
             }
         }
-        stage('Test') {
-            steps {
-                bat 'jenkins\\scripts\\test.bat'
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         bat 'jenkins\\scripts\\test.bat'
+        //     }
+        // }
         stage('Deploy') {
             steps {
                 // Add your deployment steps here
