@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const API_BASE_URL = "http://localhost:9090/order-billing-ws/order";
-const API_BASE_URL = "http://localhost:9090/Kopeetearia-API/order";
+const API_BASE_URL = "http://localhost:9090/order-billing-ws/order";
+// const API_BASE_URL = "http://localhost:9090/Kopeetearia-API/order";
 
 export const getOrders = async () => {
   try {
